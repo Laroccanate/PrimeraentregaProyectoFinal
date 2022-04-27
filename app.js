@@ -65,7 +65,6 @@ if (nombrePerro == undefined){
 const p =document.createElement ("p")
 p.innerText= `${aquienBusca} no se encuentra en nuestra base de datos`
 div.append(p)
-    //console.log("El perro que busca no se encuentra en nuestra base de datos")
 }else {const div =document.getElementById ("divInferior")
 const p =document.createElement ("p")
 p.innerText= `${aquienBusca} ya esta ingresado en nuestra base de datos`
