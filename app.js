@@ -16,8 +16,6 @@ let perro4 = new perro ("morgan", "bruno", "macho", 2016, "3333-3333")
 let perro5 = new perro ("raviol", "paula", "hembra", 2017, "2222-2222")
 let perro6 = new perro ("luna", "marco", "hembra", 2018, "7777-7777")
 
-
-
 const jauria =[] 
 
 jauria.push(perro1)
@@ -28,6 +26,7 @@ jauria.push(perro5)
 jauria.push(perro6)
 
 console.log(jauria)
+
 
 
 function agregarPerro () {
@@ -41,16 +40,18 @@ function agregarPerro () {
     console.log(jauria)
 }
 do{
-    respuesta = prompt("Desa ingresar un nuevo perro?").toLowerCase()
+    respuesta = prompt("Desa ingresar un nuevo perro? (si/no)").toLowerCase()
 
 if (respuesta == "si"){
     agregarPerro()
-    respuesta = prompt("Desa ingresar un nuevo perro?").toLowerCase()
+    respuesta = prompt("Desa ingresar un nuevo perro? (si/no)").toLowerCase()
 }
 if (respuesta == "no"){
     alert("Muchas gracias! Hasta la proxima!")
 }
 }while (respuesta !== "si" && respuesta !== "no")
+
+
 
 let macho = jauria.filter(perro=>perro.sexo=="macho")
 console.log(macho)
@@ -60,6 +61,40 @@ console.log(hembra)
 let aquienBusca = prompt("Ingrese el nombre del perro que busca").toLowerCase()
 let nombrePerro = jauria.find(perro=>perro.nombre==aquienBusca)
 if (nombrePerro == undefined){
-    console.log("El perro que busca no se encuentra en nuestra base de datos")
-}else console.log(nombrePerro)
+    const div =document.getElementById ("divInferior")
+const p =document.createElement ("p")
+p.innerText= `${aquienBusca} no se encuentra en nuestra base de datos`
+div.append(p)
+    //console.log("El perro que busca no se encuentra en nuestra base de datos")
+}else {const div =document.getElementById ("divInferior")
+const p =document.createElement ("p")
+p.innerText= `${aquienBusca} ya esta ingresado en nuestra base de datos`
+div.append(p)}
+
+
+const ul =document.getElementById ("ulSuperior")
+jauria.forEach ((perro, iPerro) =>{
+const li =document.createElement ("li")
+    li.innerText =perro.nombre
+    const subLista =document.createElement("ul")
+    const liDuenio =document.createElement ("li")
+    liDuenio.innerText =`Dueño: ${perro.duenio}`
+    const liSexo = document.createElement("li")
+    liSexo.innerText =`Sexo: ${perro.sexo}`
+    const liAnio = document.createElement ("li")
+    liAnio.innerText =`Año de nacimiento: ${perro.anio}`
+    const liTelefono =document.createElement ("li")
+    liTelefono.innerText =`Telefono: ${perro.telefono}`
+    subLista.append(liDuenio)
+    subLista.append(liSexo)
+    subLista.append(liAnio)
+    subLista.append(liTelefono)
+    li.append(subLista)
+    ul.append(li)
+}
+)
+
+
+
+
 
